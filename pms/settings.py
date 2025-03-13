@@ -85,14 +85,25 @@ WSGI_APPLICATION = 'pms.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'pms',
+#        'USER': 'root',
+#        'PASSWORD': 'root',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pms',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'bbMFNBZWLAqrDoXbwkTjedmJKOhyQOJM',
+        'HOST': 'shuttle.proxy.rlwy.net',
+        'PORT': '27543',
     }
 }
 
