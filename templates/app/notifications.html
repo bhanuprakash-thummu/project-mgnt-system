@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications Page</title>
+    <link rel="stylesheet" href="{% static 'css/notifications.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="menu">
+            {% if login_type == 'admin' %}
+                <a href="{% url 'admin_home' %}">Home</a>
+            {% else %}
+                <a href="{% url 'home' %}">Home</a>
+            {% endif %}
+            {% if login_type == 'admin' %}
+                <a href="{% url 'admin_tasks' %}">Tasks</a>
+            {% else %}
+                <a href="{% url 'tasks' %}">Tasks</a>
+            {% endif %}
+            <a href="{% url 'projects' %}">Projects</a>
+            <a href="{% url 'report' %}">Report</a>
+            <a href="{% url 'notifications' %}">Notifications</a>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="profile" id="profile">
+                <a href="{% url 'profile_page' %}">
+                    <img src="{{ profile.profile_picture|default:'/static/images/profile.png' }}" alt="Profile Picture">
+                </a>
+            </div>
+        </div>
+        <form action="{% url 'logout' %}" method="post" class="sidebar-logout-form">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main">
+        <span class="menu-btn" id="menuToggle">☰</span>
+
+        <!-- User Notifications -->
+        <div class="notification-container">
+            <h2>Notifications</h2>
+            {% if notifications %}
+                {% for notification in notifications %}
+                    <div class="notification">
+                        <span class="bell-icon">🔔</span>
+                        <span class="message">{{ notification.message|safe }} ({{ notification.date }})</span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="notification">
+                    <span class="bell-icon">🔔</span>
+                    <span class="message">No new notifications.</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <script src="{% static 'js/notifications.js' %}"></script>
+</body>
+</html>

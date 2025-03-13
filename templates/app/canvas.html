@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Whiteboard</title>
+  <link rel="stylesheet" href="{% static 'css/canvas.css' %}">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <div class="whiteboard-container">
+    <h2>{{ project.title }} - Whiteboard</h2>
+    <iframe src="https://excalidraw.com" width="100%" height="600px" style="border: none;"></iframe>
+  </div>
+
+</body>
+</html>
